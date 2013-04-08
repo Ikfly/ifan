@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.locale" value="zh_CN"/>  
+    <constant name="struts.i18n.encoding" value="UTF-8"/>  
+    <constant name="struts.action.extension" value="do,go,action"/>
+    
+
+<!--  
+   <package name="global" namespace="/boryou" extends="struts-default" abstract="true">
+      <global-results>
+         <result name="login">/boryou/login.jsp</result>
+	     <result name="index">/index.jsp</result>
+      </global-results>
+   </package>
+ -->
+    <!-- 登陆 -->
+   <package name="login" namespace="/boryou" extends="struts-default">
+	<action name="login_*" method="{1}" class="com.boryou.action.login.LoginAction">
+	     <result name="login">/boryou/login.jsp</result>
+	     <result name="index">/index.jsp</result>
+	</action>
+    </package> 
+    
+    <!-- 用户管理 -->
+    
+    <package name="user" namespace="/boryou" extends="struts-default">
+     <action name="user_*" method="{1}" class="com.boryou.action.user.UserAction">
+         <result name="user_manage">/boryou/user/user_manage.jsp</result>
+         <result name="login">/boryou/login.jsp</result>
+     </action>
+    </package>
+    
+    <!-- 订单管理 -->
+    <package name="order" namespace="/boryou" extends="struts-default">
+     <action name="order_*" method="{1}" class="com.boryou.action.order.OrderAction">
+         <result name="list">/boryou/order/order_list.jsp</result>
+         <result name="order">/boryou/order/my_order.jsp</result>
+         <result name="query">/boryou/order/query_order.jsp</result>
+         <result name="order_manage">/boryou/order/manage_order.jsp</result>
+         <result name="menu">/boryou/order/today_menu.jsp</result>
+         <result name="error">/boryou/order/error.jsp</result>
+     </action>
+    </package>
+    
+    <!-- 邮件 -->
+    <package name="email" namespace="/boryou" extends="struts-default">
+     <action name="email_*" method="{1}" class="com.boryou.action.email.EmailAction">
+        <result name="login">/boryou/login.jsp</result>
+        <result name="forget">/boryou/forgetPwd.jsp</result>
+     </action>
+    </package>
+    
+    <!-- 用户在线交流 -->
+    <package name="online" namespace="/boryou" extends="struts-default">
+     <action name="online_*" method="{1}" class="com.boryou.action.online.OnlineAction">
+         <result name="login">/boryou/login.jsp</result>
+     </action>
+    </package>
+    
+    <!-- 消息盒子 -->
+    <package name="message" namespace="/boryou" extends="struts-default">
+     <action name="message_*" method="{1}" class="com.boryou.action.online.MessageAction">
+         <result name="message_box">/boryou/message/message_box.jsp</result>
+         <result name="message_detail">/boryou/message/message_detail.jsp</result>
+     </action>
+    </package>
+    
+    <!-- 系统通知 -->
+    <package name="notice" namespace="/boryou" extends="struts-default">
+     <action name="notice_*" method="{1}" class="com.boryou.action.notice.NoticeAction">
+         <result name="notice">/boryou/notice/notice.jsp</result>
+     </action>
+    </package>
+    
+</struts>

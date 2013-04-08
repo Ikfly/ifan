@@ -1,0 +1,107 @@
+@charset "gb2312";
+
+/*CSS reset*/
+body {font:12px/20px "ËÎÌå","\5b8b\4f53",sans-serif;background-color:#edf0f8;color:#000;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0;}
+table {border-collapse:collapse;border-spacing:0;}
+fieldset,img {border:0;}
+address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal;}
+ol,ul {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal;}
+form {margin:0;padding:0;}
+q:before,q:after {content:"";}
+abbr,acronym {border:0;}
+img,a img {vertical-align:middle;border:0;}
+a:link, a:visited {text-decoration:none;color:#000;}
+a:hover {text-decoration:underline;color:#ff0064;}
+a:active {text-decoration:none;color:#000;}
+
+.swepimg{ cursor:pointer;}
+
+/* font */
+.f12 {font-size:12px;}
+.f13 {font-size:13px;}
+.f14 {font-size:14px;}
+.f16 {font-size:16px;}
+.f18 {font-size:18px;}
+.f20 {font-size:20px;}
+.f24 {font-size:24px;}
+.fb {font-weight:bold;}
+.fn {font-weight:normal;}
+.t2 {text-indent:2em;}
+.lh150 {line-height:150%;}
+.lh180 {line-height:180%;}
+.lh200 {line-height:200%;}
+.lh14 {line-height:14px;}
+.lh18 {line-height:18px;}
+.lh20 {line-height:20px;}
+.lh24 {line-height:24px;}
+.lh30 {line-height:30px;}
+.lh36 {line-height:36px;}
+.lh40 {line-height:40px;}
+.unl {text-decoration:underline;}
+.no_unl {text-decoration:none;}
+.f24w {font:normal 24px "Î¢ÈíÑÅºÚ","ËÎÌå";color:#bfbfbf;}
+.f18wy {font:normal 18px "Î¢ÈíÑÅºÚ","ËÎÌå";color:#f9c200;}
+.f18wblue {font:normal 18px "Î¢ÈíÑÅºÚ","ËÎÌå";color:#0070c0;}
+.f18wred {font:normal 18px "Î¢ÈíÑÅºÚ","ËÎÌå";color:#ff0000;}
+.f18wite {font:normal 18px "Î¢ÈíÑÅºÚ","ËÎÌå";color:#fff;}
+.f18wy2 {font:normal 18px "Î¢ÈíÑÅºÚ","ËÎÌå";color:#ffff00;}
+.fblue,a.fblue {color:#0000ff;}
+.fblue a,.fblue a:visited {color:#0000ff;}
+.fblue a:hover {color:#ff0064;text-decoration:underline;}
+.fyel {font:normal 12px "ËÎÌå";color:#fff600;}
+.fyel2 {font:normal 12px "ËÎÌå";color:#ff4200;}
+.fred1 {color:#c60a00;}
+.fred1 a,.fred1 a:visited {color:#c60a00;}
+.fred1 a:hover {color:#ff0064;text-decoration:underline;}
+.fgreen1 {color:#007b43;}
+.fgreen1 a,.fgreen1 a:visited {color:#007b43;}
+.fgreen1 a:hover {color:#ff0064;text-decoration:underline;}
+.fred2 {color:#ff0000;}
+.fred2 a,.fred2 a:visited {color:#ff0000;}
+.fred2 a:hover {color:#ff0064;text-decoration:underline;}
+.fblue2,a.fblue2 {color:#0000ff;text-decoration:underline;}
+.fblue2 a,.fblue2 a:visited {color:#0000ff;text-decoration:underline;}
+.fblue2 a:hover {color:#ff0064;text-decoration:underline;}
+.fuline,a.fuline {text-decoration:underline;}
+.fuline a,.fuline a:visited {text-decoration:underline;}
+.fuline a:hover {color:#ff0064;text-decoration:underline;}
+
+
+/* position*/
+.tl {text-align:left;}
+.tc {text-align:center;}
+.tr {text-align:right;}
+.bc {margin-left:auto;margin-right:auto;}
+.l {float:left;display:inline;}
+.r {float:right;display:inline;}
+.clear {clear:both;height:0;overflow:hidden;}
+.clearfix:after {clear:both;height:0;overflow:hidden;display:block;visibility:hidden;content:".";}
+.vm {vertical-align:middle;}
+.pr {position:relative;}
+.pa {position:absolute;}
+.zoom {zoom:1;}
+.hidden {visibility:hidden;}
+.none {display:none;}
+.block {display:block;}
+.inline {display:inline;}
+.hand {cursor:pointer;}
+.content {width:100%;margin:0 auto;clear:both;}
+.right {float:right;width:86%;}
+
+/* form */
+.input1 {width:202px;height:22px;border:1px #607395 solid;line-height:22px;padding:0 5px;}
+.input2 {width:74px;height:22px;border:1px #607395 solid;line-height:22px;padding:0 5px;}
+.but1 {width:82px;height:28px;background:url(../images/but1.gif) no-repeat;font:bold 13px/28px "ËÎÌå";color:#fff;border:0;cursor:pointer;}
+.input3 {height:22px;background:url(../images/icon_search.gif) no-repeat 2% 50% #fff;border:1px #b0c4df solid;line-height:25px;padding:0 5px 0 20px;}
+.input4 {width:74px;height:22px;border:1px #607395 solid;line-height:22px;padding:0 5px;}
+.but2 {width:71px;height:25px;background:url(../images/but2.gif) repeat-x;font:bold 14px/25px "ËÎÌå";color:#fff;cursor:pointer;border:1px #c76000 solid;}
+.but3 {width:48px;height:21px;background:url(../images/but3.gif) repeat-x;font:normal 12px/21px "ËÎÌå";color:#000;cursor:pointer;border:0;}
+.but4 {width:74px;height:21px;background:url(../images/but4.gif) repeat-x;font:normal 12px/21px "ËÎÌå";color:#000;cursor:pointer;border:0;}
+.input5 {width:70%;height:22px;background:url(../images/icon_search.gif) no-repeat 1% 50% #fff;border:1px #b0c4df solid; padding:0 5px 0 20px;}
+.input6 {width:71%;height:22px;border:1px #b0c4df solid;font:normal 12px/25px "ËÎÌå";padding:0 5px;}
+.input7 {width:35%;height:22px;border:1px #b0c4df solid;font:normal 12px/25px "ËÎÌå";padding:0 5px;}
+.input8 {width:85%;height:140px;border:1px #b0c4df solid;font:normal 12px/20px "ËÎÌå";padding:0 5px;}
+

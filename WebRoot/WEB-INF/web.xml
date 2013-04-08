@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<!-- struts -->
+	
+	<filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+    </filter>
+	<filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/boryou/*</url-pattern>
+    </filter-mapping>
+	
+	<!--struts filter ends  -->
+	
+	
+	<!-- 守护线程 -->
+	<listener>
+	 <listener-class>com.boryou.listener.MonitorServlet</listener-class>
+	</listener>
+	
+    <!-- 守护线程结束 -->
+    
+  	<!-- Define the pushlet servlet -->
+	<servlet>
+		<servlet-name>pushlet</servlet-name>
+		<servlet-class>nl.justobjects.pushlet.servlet.Pushlet</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+
+	<!-- Define the Servlet Mappings. -->
+
+	<!-- The pushlet -->
+	<servlet-mapping>
+		<servlet-name>pushlet</servlet-name>
+		<url-pattern>/boryou/include/pushlet.srv</url-pattern>
+	</servlet-mapping>
+  
+  
+  <!--在线交流开始  --> 
+  <servlet>
+     <servlet-name>FetchOnlineUsersServlet</servlet-name>
+     <servlet-class>com.boryou.web.online.FetchOnlineUsersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>FetchOnlineUsersServlet</servlet-name>
+   <url-pattern>/FetchOnlineUsersServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+     <servlet-name>SendMessageServlet</servlet-name>
+     <servlet-class>com.boryou.web.online.SendMessageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>SendMessageServlet</servlet-name>
+   <url-pattern>/SendMessageServlet</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+     <servlet-name>DeliverServlet</servlet-name>
+     <servlet-class>com.boryou.web.online.DeliverServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>DeliverServlet</servlet-name>
+   <url-pattern>/DeliverServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+     <servlet-name>MessageBoxServlet</servlet-name>
+     <servlet-class>com.boryou.web.messagebox.MessageBoxServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>MessageBoxServlet</servlet-name>
+   <url-pattern>/MessageBoxServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+     <servlet-name>MessageBoxDetailServlet</servlet-name>
+     <servlet-class>com.boryou.web.messagebox.MessageBoxDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>MessageBoxDetailServlet</servlet-name>
+   <url-pattern>/MessageBoxDetailServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 在线交流结束 -->
+  
+ <!-- 菜单图片 -->
+  <servlet>
+     <servlet-name>UploadImgServlet</servlet-name>
+     <servlet-class>com.boryou.action.order.servlet.UploadImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>UploadImgServlet</servlet-name>
+   <url-pattern>/UploadImgServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+     <servlet-name>ShowImgServlet</servlet-name>
+     <servlet-class>com.boryou.action.order.servlet.ShowImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   <servlet-name>ShowImgServlet</servlet-name>
+   <url-pattern>/ShowImgServlet</url-pattern>
+  </servlet-mapping>
+ <!-- 图片结束 -->
+ 
+  
+  <!-- 字符编码过滤器 -->
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>com.boryou.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+        <param-name>encoding</param-name>
+        <param-value>utf-8</param-value>
+    </init-param>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  <!-- 判断是否有访问权限的过滤器 -->
+	<filter>
+		<filter-name>RoleFilter</filter-name>
+		<filter-class>com.boryou.filter.RoleFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>RoleFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+  
+
+  
+  <session-config>
+   <session-timeout>30</session-timeout>
+</session-config>
+
+  <!-- 网站ico mapping -->
+  
+  <mime-mapping>
+    <extension>ico</extension>
+    <mime-type>image/x-icon</mime-type>
+  </mime-mapping> 
+  
+</web-app>
