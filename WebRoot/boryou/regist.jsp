@@ -10,11 +10,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 	<base href="<%=basePath %>" />
-	<title>ifan注册页</title>
+	<title>注册</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	
-	<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/global.css" />
-	<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/boryou.css" />
+	<link rel="stylesheet" type="text/css" href="boryou/css/global.css" />
+	<link rel="stylesheet" type="text/css" href="boryou/css/boryou.css" />
+	<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/bootstrap-responsive.min.css"/>
 	<script type="text/javascript" src="<%=path %>/boryou/js/AjaxObject.js"></script>
 	<script type="text/javascript">
 	function back(){
@@ -129,45 +130,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 <div class="logintab">
-	<form id="registForm"  method="post">
-	<div align="left">
-	<font id="checkTips"  color="red"></font>
+    <font id="checkTips"  color="red"></font>
+	<form id="registForm"  method="post" class="form-horizontal">
+	<div class="control-group">
+	    <lable class="control-label" for="userName">用户名:</lable>
+	    <div class="controls">
+	      <input type="text" id="userName" name="userName" onfocus="clearsp('spUserName')" onblur="validateUserName()" /><span id="spUserName"  style="color:red";>  *</span>
+	    </div>
 	</div>
-		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="logintable1">
-		  <tr>
-		    <td width="22%" class="f14">用户名:</td>
-		    <td width="78%">
-		      <input class="input1" type="text" id="userName" name="userName" onfocus="clearsp('spUserName')" onblur="validateUserName()"/><span id="spUserName"  style="color:red";>  *</span>
-		    </td>
-		  </tr>
-		  <tr>
-		    <td width="22%" class="f14">常用邮箱:</td>
-		    <td width="78%">
-		      <input class="input1" type="text" id="userEmail" name="userEmail" onfocus="clearsp('spEmail')" onblur="validateEmail()" /><span id="spEmail" style="color:red";>  *</span>
-		    </td>
-		  </tr>
-		  <tr>
-		    <td width="22%" class="f14">真实姓名:</td>
-		    <td width="78%">
-		      <input class="input1" type="text" id="userRealName" name="userRealName" onfocus="clearsp('spRealName')" onblur="validateRealName()" /><span id="spRealName" style="color:red";>  *</span>
-		    </td>
-		  </tr>
-		  <tr>
-		    <td class="f14">密  码:</td>
-		    <td>
-		    	<input class="input1" type="password" id="userPassword" name="userPassword" onfocus="clearsp('spPwd')" onblur="validatePwd()" /><span id="spPwd" style="color:red";>  *</span>
-	    	</td>
-		  </tr>
-		  <tr>
-		    <td class="f14">&nbsp;</td>
-		    <td>
-		      <input  type="button" value="注 册" onclick="regist()" />　
-		      <input  type="button" onclick="back()" value="返 回" />
-		    </td>
-		  </tr>
-		</table>
-		<div class="loginbot"> </div>
-	    <div class="clear"></div>
+	
+	<div class="control-group">
+	    <lable class="control-label" for="userEmail">常用邮箱:</lable>
+	    <div class="controls">
+	       <input type="text" id="userEmail" name="userEmail" onfocus="clearsp('spEmail')" onblur="validateEmail()" /><span id="spEmail" style="color:red";>  *</span>
+	    </div>
+	</div>
+	
+	<div class="control-group">
+	    <lable class="control-label" for="userRealName">真实姓名:</lable>
+	    <div class="controls">
+	       <input type="text" id="userRealName" name="userRealName" onfocus="clearsp('spRealName')" onblur="validateRealName()" /><span id="spRealName" style="color:red";>  *</span>
+	    </div>
+	</div>
+	
+	<div class="control-group">
+	    <lable class="control-label" for="userPassword">密  码:</lable>
+	    <div class="controls">
+	       <input type="password" id="userPassword" name="userPassword" onfocus="clearsp('spPwd')" onblur="validatePwd()" /><span id="spPwd" style="color:red";>  *</span>
+	    </div>
+	</div>
+	
+	<div class="control-group">
+	    <div class="controls">
+	      <input class="btn btn-primary" type="button" value="注 册" onclick="regist()" />　
+	      <input class="btn" type="button" onclick="back()" value="返 回" />
+	    </div>
+	</div>
     </form>
 </div>
 </body>

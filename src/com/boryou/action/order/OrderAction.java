@@ -399,7 +399,6 @@ public class OrderAction extends AbstractAction {
 		    long now = new Date().getTime();
 		    if(now < Constant4Web.open().getTime() || (now >= Constant4Web.noon().getTime() && 
 		    		now < Constant4Web.dinner().getTime()) || now >= Constant4Web.shutdown().getTime()){
-		    	
 		    	return "error";
 		    }else{
 		    	return "order";
@@ -424,10 +423,9 @@ public class OrderAction extends AbstractAction {
 					request.setAttribute("ordered", "not");
 					int extraNumber=0;
 					try{
-					     extraNumber=Integer.parseInt(request.getParameter("extraRiceNum"));
+					     extraNumber=Integer.parseInt(request.getParameter("extraNum"));
 					    }catch(Exception er){
-					    	String[] extraNum = request.getParameterValues("extraRadioNum");
-						    extraNumber=Integer.parseInt(extraNum[0]);
+					    	er.printStackTrace();
 					    }
 					     String note=(String)request.getParameter("note");
 					     BOrder newOrder=new BOrder();

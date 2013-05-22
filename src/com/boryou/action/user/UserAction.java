@@ -28,10 +28,16 @@ public class UserAction extends AbstractAction{
 	 * @return
 	 */
 	public String regist(){
+		String userEmail=(String)request.getParameter("userEmail");
+		if(userEmail == null || userEmail.equalsIgnoreCase("")) return "login";
+		if(dao.isEmailExists(userEmail)){
+			request.setAttribute("message", "请勿重复注册");
+			return "login";
+		}
 		String userName=(String)request.getParameter("userName");
 		String userPassword=(String)request.getParameter("userPassword");
 		String userRealName=(String)request.getParameter("userRealName");
-		String userEmail=(String)request.getParameter("userEmail");
+		
 		BOrderUser user = new BOrderUser();
 		user.setUserName(userName);
 		user.setUserPassword(userPassword);

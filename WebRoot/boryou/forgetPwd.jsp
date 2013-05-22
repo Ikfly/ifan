@@ -10,10 +10,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 	<base href="<%=basePath %>" />
-	<title>ifan注册页</title>
+	<title>找回密码</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
-	<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/global.css" />
+	<link rel="stylesheet" type="text/css" href="boryou/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="boryou/css/bootstrap-responsive.min.css"/>
 	<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/boryou.css" />
 	<script type="text/javascript" src="<%=path %>/boryou/js/AjaxObject.js"></script>
 	
@@ -62,33 +63,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 <div class="logintab">
-	<form id="registForm"  method="post">
-	<div align="left">
-	<font id="checkTips"  color="red"></font>
+    <font id="checkTips"  color="red"></font>
+	<form id="registForm"  method="post" class="form-horizontal">
+	<div class="control-group">
+	    <label class="control-label" for="userEmail">邮箱地址:</label>
+	    <div class="controls">
+	       <input type="text" id="userEmail" name="userEmail" /><span  style="color:red";>  *</span>
+	    </div>
 	</div>
-		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="logintable1">
-		<tr>
-		  <td></td>
-		  <td>请输入您注册的邮箱</td>
-		  </tr>
-		  <tr>
-		    <td width="22%" class="f14">邮箱地址:</td>
-		    <td width="78%">
-		      <input class="input1" type="text" id="userEmail" name="userEmail" /><span  style="color:red";>  *</span>
-		    </td>
-		  </tr>
-		  
-		  <tr>
-		    <td class="f14">&nbsp;</td>
-		    <td>
-		      <input  type="button" value="确 定" onclick="sendEmail()" />　
-		      <input  type="button" onclick="back()" value="返 回" />
-		    </td>
-		  </tr>
-		  
-		</table>
-		<div class="loginbot"> </div>
-	    <div class="clear"></div>
+	<div class="control-group">
+	    <div class="controls">
+	         <input class="btn btn-primary" type="button" value="确 定" onclick="sendEmail()" />　
+		     <input class="btn" type="button" onclick="back()" value="返 回" />
+	    </div>
+	</div>
     </form>
 </div>
 </body>

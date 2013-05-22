@@ -7,8 +7,8 @@
 <%
 
 List<BOrder> result = (List<BOrder>)request.getAttribute("result");
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String sdpath = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+sdpath+"/";
 String selectCheck = (String)request.getSession().getAttribute(Constant4Web.QUERY_SELECT);
 int nowPage=(Integer)request.getAttribute("nowPage");
 long totalNum=(Long)request.getAttribute("totalNum");	
@@ -18,13 +18,9 @@ int pageSize=(Integer)request.getAttribute("pageSize");
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/global.css" />
-<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/boryou.css" />
-<script src="<%=path %>/boryou/js/jquery.js" type="text/javascript"></script>
-<script src="<%=path %>/boryou/js/global.js" type="text/javascript"></script>
-<script type="text/javascript" src="<%=path %>/boryou/datepickerHH/WdatePicker.js" defer="defer"></script>
+<script type="text/javascript" src="<%=sdpath %>/boryou/datepickerHH/WdatePicker.js" defer="defer"></script>
 
-<title>ifan</title>
+<title>订单查询</title>
 <script type="text/javascript">
     
     var nowPage=<%=nowPage%>;
@@ -43,7 +39,7 @@ int pageSize=(Integer)request.getAttribute("pageSize");
 	    //  alert("已经是最后一页了");
 	      return;
 	   }else{
-	   var url="<%=path%>/boryou/order_query.action?nowPage="+(nowPage+1);
+	   var url="<%=sdpath%>/boryou/order_query.action?nowPage="+(nowPage+1);
 	      window.location.href=url ;
 	   }
 	}
@@ -53,7 +49,7 @@ int pageSize=(Integer)request.getAttribute("pageSize");
 	    //  alert("已经是第一页了");
 	      return;
 	   }else{
-	   var url="<%=path%>/boryou/order_query.action?nowPage="+(nowPage-1);
+	   var url="<%=sdpath%>/boryou/order_query.action?nowPage="+(nowPage-1);
 	      window.location.href=url ;
 	   }
 	}
@@ -63,7 +59,7 @@ int pageSize=(Integer)request.getAttribute("pageSize");
 	      //  alert("已经是最后一页了");
 	        return;
 	    }else{
-	    var url="<%=path%>/boryou/order_query.action?nowPage="+pageNum;
+	    var url="<%=sdpath%>/boryou/order_query.action?nowPage="+pageNum;
 	    window.location.href=url ;
 	    }
 	}
@@ -73,7 +69,7 @@ int pageSize=(Integer)request.getAttribute("pageSize");
 	    //    alert("已经是第一页了");
 	        return;
 	    }else{
-	    var url="<%=path%>/boryou/order_query.action?nowPage="+1;
+	    var url="<%=sdpath%>/boryou/order_query.action?nowPage="+1;
 	    window.location.href=url ;
 	    }
 	}
@@ -85,7 +81,7 @@ int pageSize=(Integer)request.getAttribute("pageSize");
 	          if(page<=0||page>pageNum){
 	              alert("超出页码范围");    
 	      }else{
-	             var url="<%=path%>/boryou/order_query.action?nowPage="+page;
+	             var url="<%=sdpath%>/boryou/order_query.action?nowPage="+page;
 	             window.location.href=url ;
 	      }
 	      }else{
@@ -94,64 +90,52 @@ int pageSize=(Integer)request.getAttribute("pageSize");
     }
 
 	function queryOrder(){
-	    document.forms["QueryForm"].action="<%=path%>/boryou/order_query.action";
+	    document.forms["QueryForm"].action="<%=sdpath%>/boryou/order_query.action";
 	    document.forms["QueryForm"].submit();
 	}
 	
 	function exportExcel(){
-	    document.forms["QueryForm"].action="<%=path%>/boryou/order_exportOrder.action";
+	    document.forms["QueryForm"].action="<%=sdpath%>/boryou/order_exportOrder.action";
 	    document.forms["QueryForm"].submit();
 	}
 </script>
 </head>
-<body>
-<div class="oarcont">
-<div class="oartop"><a>订单查询</a> </div>
-<table border="0" cellspacing="0" cellpadding="0" class="rtable2" width="100%">
-<tr>
-    <td valign="top">
-    <div class="rtabcont2">
-    
-     <form id="QueryForm" method="post">
-   <table width="100%" border="1" cellspacing="0" cellpadding="0" class="rtable2">
-   <tr>
-   <td width="10%">开始时间: </td>
-   <td width="10%"><input name="startTime"  class="Wdate" type="text" onfocus="WdatePicker({isShowClear:false,readOnly:true, skin:'whyGreen'})" size="20" value="${sessionScope.QUERY_STARTTIME }" />
-	</td>
-	<td width="10%">截止时间: </td>
-	<td width="10%"><input name="endTime" class="Wdate" type="text" onfocus="WdatePicker({isShowClear:false,readOnly:true, skin:'whyGreen'})" size="20" value="${sessionScope.QUERY_ENDTIME }" /></td>
-	<td>姓名</td>
-	<td><input id="userRealName" name="userRealName" type="text" value="${sessionScope.QUERY_USERNAME}" /></td>
-	<td>有无付款</td>
-	<td>
+<body onload="changeActive(3)"> 
+<%@include file="../include/top.jsp" %>
+<div class="container">
+    <div class="oartop"><a>订单查询</a> </div>
+    </br>
+    <form id="QueryForm" method="post" class="form-inline">
+    <lable>开始时间: </lable>
+    <input name="startTime"  class="Wdate" type="text" onfocus="WdatePicker({isShowClear:false,readOnly:true, skin:'whyGreen'})" size="5" value="${sessionScope.QUERY_STARTTIME }" />
+    <lable>截止时间: </lable>
+	<input name="endTime" class="Wdate" type="text" onfocus="WdatePicker({isShowClear:false,readOnly:true, skin:'whyGreen'})" size="5" value="${sessionScope.QUERY_ENDTIME }" />
+	<lable>姓名</lable>
+	<input id="userRealName" name="userRealName" type="text" value="${sessionScope.QUERY_USERNAME}" />
 	<select name="checkSelect">
 	<option value="-1" <% if(selectCheck.equals("-1")){%> selected="selected" <%}%>>全部</option>
 	<option value="0" <% if(selectCheck.equals("0")){%> selected="selected" <%}%>>未付款</option>
 	<option value="1" <% if(selectCheck.equals("1")){%> selected="selected" <%}%>>已付款</option>
 	</select>
-	</td>
-	<td><input name="query" type="button" value="查询" onclick="javascript:queryOrder()" /></td>
-	<td><input name="exportToExcel" type="button" value="导出查询结果" onclick="javascript:exportExcel()"/></td>
-	</tr>
-	</table>
+	<input name="query" class="btn btn-primary" type="button" value="查询" onclick="javascript:queryOrder()" /></td>
+	<input name="exportToExcel" class="btn" type="button" value="导出" onclick="javascript:exportExcel()"/>
 	</form>
 	  <div><font color="red">${requestScope.message}</font></div>
-	 <div class="page1"><span>第 <input type="text" id="pageIndex" size="7" value="<%=nowPage %>"  /> 
-	页 <input  onclick="javascript:gotoPage()"  type="button" value="GO" />　　<a class="fblue2" href="javascript:firstPage()">第一页</a>　<a class="fblue2" href="javascript:pageUp()">上一页</a>　<a class="fblue2" href="javascript:nextPage()">下一页</a>　<a class="fblue2" href="javascript:lastPage()">最后一页</a>
+	 <div><span>第 <input type="text" id="pageIndex" size="3" value="<%=nowPage %>"  /> 
+	页 <input  onclick="javascript:gotoPage()"  type="button" class="btn" value="GO" />　　<a class="fblue2" href="javascript:firstPage()">第一页</a>　<a class="fblue2" href="javascript:pageUp()">上一页</a>　<a class="fblue2" href="javascript:nextPage()">下一页</a>　<a class="fblue2" href="javascript:lastPage()">最后一页</a>
 	</span>共<font class="fred2"><%=totalNum %></font>条记录 每页<font class="fred2"><%=pageSize %></font>条，
 	共<font class="fred2"><%if(totalNum%pageSize==0){
     %><%=totalNum/pageSize %><%}else{%>
 	<%=totalNum/pageSize+1%>
 	<%}%></font>页</div>
-	
-		<table width="100%" border="1" cellspacing="0" cellpadding="0" class="rtable2">
-		  <tr class="tt">
-		    <td width="5%">序号</td>
-		    <td width="10%">姓名</td>
-		    <td width="15%" align="center">下单时间</td>
-		     <td width="20%" align="center">留言</td>
-		     <td width="8%" align="center">付款</td>
-		     <td width="15%" align="center">找零备注</td>
+		<table width="100%" class="table table-striped table-hover">
+		  <tr>
+		    <td width="5%"><b>序号</b></td>
+		    <td width="10%"><b>姓名</b></td>
+		    <td width="15%" align="center"><b>下单时间</b></td>
+		     <td width="20%" align="center"><b>留言</b></td>
+		     <td width="8%" align="center"><b>付款</b></td>
+		     <td width="15%" align="center"><b>找零备注</b></td>
 		  </tr>
 	<%int index = 0;
 	if(result != null && result.size()>0 ){
@@ -189,10 +173,6 @@ int pageSize=(Integer)request.getAttribute("pageSize");
 		  <%}
 		  } %>
 		</table>
-	</div> 	
-	</td>	
-	</tr>
-	</table>
 </div>
 </body>
 </html>

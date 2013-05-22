@@ -1,16 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    <%String path = request.getContextPath(); %>
+    <%String sdpath = request.getContextPath(); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>ifan</title>
-<script src="<%=path %>/boryou/js/jquery.js" type="text/javascript"></script>
-	<script src="<%=path %>/boryou/js/global.js" type="text/javascript"></script>
-	<script type="text/javascript" src="<%=path %>/boryou/js/AjaxObject.js"></script>
-	<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/global.css" />
-	<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/boryou.css" />
+<title>在线好友</title>
 	<script type="text/javascript">
 	
 	document.onkeypress = function(event){
@@ -43,7 +38,7 @@
 	        return false;
 	    }
 	    document.getElementById("chatHistory").value+="我："+ window.top.frames['topFrame'].document.getElementById('clock').innerHTML+"\r" + document.getElementById("chatInput").value+"\r";
-	    var url="<%=path%>/boryou/online_sendMessage.action?receiver=" + document.getElementById("receiver").value;
+	    var url="<%=sdpath%>/boryou/online_sendMessage.action?receiver=" + document.getElementById("receiver").value;
 	    var inputMes = document.getElementById("chatInput").value;
         inputMes = inputMes.replace(regR,"\\r").replace(regN,"\\n");
 	    var info="chatInput="+inputMes;
@@ -80,7 +75,7 @@
 	}
 	
 	function fetchOnlineUser(){
-	    var url="<%=path%>/boryou/online_fetchOnline.action";
+	    var url="<%=sdpath%>/boryou/online_fetchOnline.action";
 	    var info ="";
 	    var ajax=new Ajax(url,"GET",true,info);
 	    ajax.dealResult=function(result){
@@ -134,7 +129,7 @@
 	}
 	
 	function fetchMessage(userId){
-	    var url="<%=path%>/boryou/online_deliver.action";
+	    var url="<%=sdpath%>/boryou/online_deliver.action";
 	    var info="senderId="+userId;
 	    var ajax=new Ajax(url,"POST",true,info);
 	    ajax.dealResult=function(result){
@@ -160,10 +155,11 @@
 	}
 	</script>
 </head>
-<body onload="fetchOnlineUser();return false;">
-<div class="oarcont">
+<body onload="fetchOnlineUser();changeActive(7);return false;">
+<%@include file="../include/top.jsp" %>
+<div class="container">
 <div class="oartop"><a>在线好友</a> </div>
-<table border="0" cellspacing="0" cellpadding="0" class="rtable2" width="60%">
+<table class="table">
 <tr>
 	<td valign="top" colspan="2" >
 	
@@ -182,7 +178,7 @@
           <font id="chatTitle"></font>
          <a onclick="closeWindow('chatWindow')" href="javascript:void(0)">关闭</a> 
          </div>
-	    <form id="chatForm" name="chatForm" method="post">
+	    <form id="chatForm" name="chatForm" method="post" >
 	    <input type="hidden" id="receiver" name="receiver" />
 	    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="flatables2">
         <tr class="tts2">

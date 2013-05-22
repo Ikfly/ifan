@@ -20,7 +20,7 @@
    <package name="login" namespace="/boryou" extends="struts-default">
 	<action name="login_*" method="{1}" class="com.boryou.action.login.LoginAction">
 	     <result name="login">/boryou/login.jsp</result>
-	     <result name="index">/index.jsp</result>
+	     <result name="notice">/boryou/notice/notice.jsp</result>
 	</action>
     </package> 
     
@@ -68,11 +68,5 @@
      </action>
     </package>
     
-    <!-- 系统通知 -->
-    <package name="notice" namespace="/boryou" extends="struts-default">
-     <action name="notice_*" method="{1}" class="com.boryou.action.notice.NoticeAction">
-         <result name="notice">/boryou/notice/notice.jsp</result>
-     </action>
-    </package>
     
 </struts>

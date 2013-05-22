@@ -5,24 +5,18 @@
  <%@page language="java" import="com.boryou.entity.*"%>   
 <%@ page isELIgnored="false"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String sdpath = request.getContextPath();
 
 	int nowPage=(Integer)request.getAttribute("nowPage");
 	long totalNum=(Long)request.getAttribute("totalNum");
 	int totalDay=(Integer)request.getAttribute("totalDay");
-	BOrderUser user=(BOrderUser)request.getSession().getAttribute(Constant4Web.USER);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/global.css" />
-<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/boryou.css" />
-<script src="<%=path %>/boryou/js/jquery.js" type="text/javascript"></script>
-<script src="<%=path %>/boryou/js/global.js" type="text/javascript"></script>
-<script src="<%=path %>/boryou/js/AjaxObject.js" type="text/javascript"></script>
-<title>ifan</title>
+
+<title>订单管理</title>
 <script type="text/javascript">
    var nowPage=<%=nowPage%>;
    var totalNum=<%=totalNum%>;
@@ -111,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    if(cbValidate()){
 	        if(window.confirm("确定要删除吗?")){
 	            document.forms["historyForm"].elements["nowPage4Del"].value=nowPage;
-	            document.forms["historyForm"].action="<%=path%>/boryou/order_delOrder.action";
+	            document.forms["historyForm"].action="<%=sdpath%>/boryou/order_delOrder.action";
 	            document.forms["historyForm"].submit();
 	        }
 	    }else{
@@ -120,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	
 	function refreshOrders(nowPage){
-	    var url = "<%=path%>/boryou/order_orderManageAjax.action";
+	    var url = "<%=sdpath%>/boryou/order_orderManageAjax.action";
 	    var info = "nowPage="+nowPage;
 	    var ajax = new Ajax(url,"POST",false,info);
 	    ajax.dealResult = function(result) {
@@ -132,16 +126,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	
 	function generatorOrders(result){
-	    var content = '<table width="100%" border="1" cellspacing="0" cellpadding="0" class="rtable2">';
-	    content += '<tr class="tt">';
-		content += '<td><input type="checkbox" id="cbSelectAll" onclick="javascript:selectAll()"/></td>';
-		content += '<td width="5%">序号</td>';
+	    var content = '<table class="table table-striped table-hover">';
+	    content += '<tr>';
+		content += '<td align="left" width="5%"><input type="checkbox" id="cbSelectAll" onclick="javascript:selectAll()"/></td>';
+		content += '<td width="5%" >序号</td>';
 		content += '<td width="10%">姓名</td>';
 		content += '<td width="15%" align="center">下单时间</td>';
 		content += '<td width="10%" align="center">加饭</td>';   
-		content += '<td width="20%" align="center">留言</td>';
+		content += '<td width="25%" align="center">留言</td>';
 		content += '<td width="8%" align="center">付款</td>';
-		content += '<td width="15%" align="center">找零备注</td>';  
+		//content += '<td width="15%" align="center">找零备注</td>';  
 		content += '</tr>';
 	    for(var i=0;i < result.length;i++){
 	        var order = result[i];
@@ -153,7 +147,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        content += '<td>' + order.extraNum + '</td>';
 	        content += '<td title="' + order.completeNote + '">' + order.note + '</td>';
 	        content += '<td align="center">' + order.checked + '</td>';
-	        content += '<td>' + order.changeNote + '</td>';
+	        //content += '<td>' + order.changeNote + '</td>';
 	        content += '</tr>';
 	    }
 	    var order_div = document.getElementById("orderTable");
@@ -167,32 +161,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </script>
 </head>
-<body onload="refreshOrders(nowPage);return false;">
-<div class="oarcont">
+<body onload="refreshOrders(nowPage);changeActive(6);return false;">
+<%@include file="../include/top.jsp" %>
+<div class="container">
 <div class="oartop" ><a>订单管理</a> </div>
-<table border="0" cellspacing="0" cellpadding="0" class="rtable2" width="100%">
-<tr>
- <td valign="top">
-    <div class="rtabcont2">
    <div><font color="red">${requestScope.message} </font></div>
 	   <div class="page1"><span>第 <input type="text" id="pageIndex" size="7" value="<%=nowPage %>"  /> 
-	天 <input  onclick="javascript:gotoPage()"  type="button" value="GO" />　　<a class="fblue2" href="javascript:firstPage()">昨天</a>　<a class="fblue2" href="javascript:pageUp()">前一天</a>　<a class="fblue2" href="javascript:nextPage()">后一天</a>　<a class="fblue2" href="javascript:lastPage()">最初一天</a>
+	天 <input  onclick="javascript:gotoPage()"  type="button" class="btn" value="GO" />　　<a class="fblue2" href="javascript:firstPage()">昨天</a>　<a class="fblue2" href="javascript:pageUp()">前一天</a>　<a class="fblue2" href="javascript:nextPage()">后一天</a>　<a class="fblue2" href="javascript:lastPage()">最初一天</a>
 	</span>共<font class="fred2"><%=totalNum %></font>条历史记录 
 	共<font class="fred2"><%=totalDay %></font>天的历史记录</div>	
 	
 	   <%if(user.getTypeId() < 3){ %>
-	   <div><input type="button" name="delOrder" id="delOrder" onclick="javascript:delOrder()" value="删除"/></div>
+	   <br/>
+	   <div><input class="btn btn-danger" type="button" name="delOrder" id="delOrder" onclick="javascript:delOrder()" value="删除"/></div>
+	   <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>注意!</strong> 删除订单数据，将不可恢复
+        </div>
 	   <%} %>
+	   <br/>
 	    <form name="historyForm" id="historyForm" method="post" >
 	    <input type="hidden" name="nowPage4Del" value="<%=nowPage %>"/>
 	    <div id="orderTable" >这天没有订单记录</div>
 		</form>
-		
-	</div>
-			 	
-	</td>	
-	</tr>
-	</table>
 </div>
 </body>
 </html>

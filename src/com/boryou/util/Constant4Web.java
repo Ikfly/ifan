@@ -22,17 +22,17 @@ public class Constant4Web {
 	public final static int NOON = 10;        //10点
 	public final static int NOONMINITE = 30;  //30分
 	
-	//当天结算截止时间
-	public final static int CHECKHOUR = 15;       //15点
-	public final static int CHECKMINITE = 30;     //30分
+	//无午餐结算截止时间
+	public final static int CHECKHOUR = 13;      
+	public final static int CHECKMINITE = 30;     
 	
 	//允许每天下午最早订饭时间
-	public final static int DINNERSTART = 16;  //16点
-	public final static int DINNERMINITE = 0; //0分
+	public final static int DINNERSTART = 15;  
+	public final static int DINNERMINITE = 30; 
 	
 	//订餐功能关闭时间
-	public final static int SHUTDOWN = 19;    //19点
-	public final static int SHUTDOWNMINITE = 30;    //30分
+	public final static int SHUTDOWN = 19;    
+	public final static int SHUTDOWNMINITE = 30;  
 	
 	//菜单图片
 	public final static String MENU_PATH = "conf/";

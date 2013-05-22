@@ -110,19 +110,6 @@ public class BOrderUserDao {
 		return isExists;
 	}
 	
-	public boolean isUserEmailExists(String email){
-		boolean isExists = false;
-		String hql = "SELECT COUNT(*) FROM BOrderUser WHERE email = '"+email+"'";
-		List<Integer> list = baseDao.searchByHql(hql, null);
-		if (list != null && list.size() > 0) {
-			int count = list.get(0);
-			if (count > 0) {
-				isExists = true;
-			}
-		}
-		return isExists;
-	}
-	
 	public long regist(String userName,String userPassword,String userRealName,String email){
 		BOrderUser user=new BOrderUser();
 		user.setUserName(userName);

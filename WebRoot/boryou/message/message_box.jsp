@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/global.css" />
 <link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/boryou.css" />
-<title>ifan</title>
+<title>消息盒子</title>
 
 <script type="text/javascript">
    function showMessageDetail(senderId){

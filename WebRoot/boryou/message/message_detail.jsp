@@ -20,7 +20,7 @@
 
 <html>
 <head>
-<title>ifan</title>
+<title>详细信息</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/global.css" />
 <link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/boryou.css" />

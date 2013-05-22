@@ -12,15 +12,15 @@ String message=(String)request.getAttribute("message"); %>
 <html>
 <head>
 	<base href="<%=basePath %>" />
-	<title>ifan</title>
+	<title>登录</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
 	<link rel="stylesheet" type="text/css" href="boryou/css/global.css" />
 	<link rel="stylesheet" type="text/css" href="boryou/css/boryou.css" />
-	<!--  
-	<link rel="icon" href="http://192.168.1.138:8080/ifan/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="http://192.168.1.138:8080/ifan/favicon.ico" type="image/x-icon" /> 
-	-->
+	<link rel="stylesheet" type="text/css" href="boryou/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="boryou/css/bootstrap-responsive.min.css"/>
+	
+	
 	<script type="text/javascript">
 	
 		function getCookie(c_name){
@@ -95,34 +95,31 @@ String message=(String)request.getAttribute("message"); %>
 
 <body onload="initCookie();">
 <div class="logintab">
-	<form id="loginForm" action="<%=path %>/LoginServlet" method="post">
-		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="logintable1">
-		<tr><td></td><td><font color="#FF0000" size="+1">${requestScope.message }</font></td></tr>
-		  <tr>
-		    <td width="22%" class="f14">用户名:</td>
-		    <td width="78%">
-		      <input class="input1" type="text" id="userName" name="user.userName" />
-		    </td>
-		  </tr>
-		  <tr>
-		    <td class="f14">密  码:</td>
-		    <td>
-		    	<input class="input1" type="password" id="password" name="user.userPassword" />
-	    	</td>
-		  </tr>
-		  <tr>
-		    <td class="f14">&nbsp;</td>
-		    <td>
-		      <input  type="button"  value="登 录" onclick="login()" />　
-		      <input  type="button" onclick="reg()" value="注 册" />
-		      &nbsp
-		      <a href="javascript:void(0)" onclick="javascript:sendPwdEmail()">忘记密码？</a>
-		    </td>
-		  </tr>
-		</table>
-		<br/>
-		<div align="center"><b>ifan  2.4</b></div>
+    
+	<form class="form-horizontal" id="loginForm"  action="<%=path %>/LoginServlet" method="post">
+	<font color="#FF0000" size="+1">${requestScope.message }</font>
+	<div class="control-group">
+		<lable class="control-label" for="userName">用户名</lable>
+		<div class="controls">
+		  <input type="text" id="userName" name="user.userName" placeholder="用户名"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<lable class="control-label" for="userName">密码</lable>
+		<div class="controls">
+		  <input type="password" id="password" name="user.userPassword" placeholder="密码"/>
+		  
+		</div>
+	</div>
+	<div class="control-group">
+      <div class="controls">
+        <button class="btn btn-primary" type="button"onclick="login()" >登 录</button>　
+	    <button class="btn" type="button" onclick="reg()" >注 册</button>
+	    <button type="button" class="btn btn-link"  onclick="sendPwdEmail()">忘记密码？</button>
+      </div>
+    </div>
+	<div align="center"><b>ifan  2.4</b></div>
     </form>
-</div>
+    </div>
 </body>
 </html>

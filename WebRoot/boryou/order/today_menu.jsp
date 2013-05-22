@@ -2,17 +2,15 @@
     pageEncoding="gbk"%>
 <%@ page isELIgnored="false"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String sdpath = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+sdpath+"/";
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset="gbk">
-<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/global.css" />
-<link rel="stylesheet" type="text/css" href="<%=path %>/boryou/css/boryou.css" />
-<title>ifan</title>
+<title>菜单上传</title>
 <style type="text/css">
 <!--
 #demo {
@@ -59,49 +57,24 @@ tab.onmouseout=function() {MyMar=setInterval(Marquee,speed)};
 
 </script>
 </head>
-<body>
-<div class="oarcont">
-<div class="oartop"><a>菜单管理</a> </div>
-	<table border="0" cellspacing="0" cellpadding="0"  width="20%">
-	<form action="<%=path %>/UploadImgServlet" method="post" enctype="multipart/form-data">
+<body onload="changeActive(5)">
+<%@include file="../include/top.jsp" %>
+<div class="container">
+<div class="oartop"><a>菜单上传</a> </div>
+
+	<table class="table">
+	<form action="<%=sdpath %>/UploadImgServlet" method="post" enctype="multipart/form-data">
 	<tr>
-	<td>选择菜单图片上传</td>
+	<td>请选择菜单图片上传</td>
 	<td></td>
 	</tr>
 	<tr>
 	<td><input type="file" name="fileforload" size="30" /></td>
-	<td><input type="submit" value="上传"/></td>
+	<td><input type="submit" class="btn" value="上传"/></td>
 	</tr>
 	</form>
 	</table>
 </div>
-	<!-- 
-<div id="demo">
-<div id="indemo">
-<div id="demo1">
-
-<a href="#"><img src="<%=path %>/boryou/img/b10.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b12.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b13.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b14.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b15.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b1.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b2.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b3.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b4.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b5.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b6.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b8.jpg" border="0" /></a>
-<a href="#"><img src="<%=path %>/boryou/img/b9.jpg" border="0" /></a>
-
-</div>
-<div id="demo2"></div>
-</div>
-</div>
-	</td>
-</tr>
-	 -->
-
 
 </body>
 </html>
